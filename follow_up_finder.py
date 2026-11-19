@@ -6,7 +6,7 @@ from datetime import date, timedelta
 
 FILE = "sample_contacts.csv"
 TODAY = date(2026, 11, 17)
-
+print("Follow-up report date:", TODAY)
 def get_holidays(year, country="US"):
     url = f"https://date.nager.at/api/v3/PublicHolidays/{year}/{country}"
     try:
