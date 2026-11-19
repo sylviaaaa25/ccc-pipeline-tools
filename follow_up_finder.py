@@ -6,6 +6,10 @@ from datetime import date, timedelta
 
 FILE = "sample_contacts.csv"
 TODAY = date(2026, 11, 17)
+
+# Follow up after 7 days.
+FOLLOW_UP_DAYS = 7
+
 print("Follow-up report date:", TODAY)
 def get_holidays(year, country="US"):
     url = f"https://date.nager.at/api/v3/PublicHolidays/{year}/{country}"
@@ -30,7 +34,7 @@ def get_holidays(year, country="US"):
 
 
 def touch_by(last_touch, holidays):
-    day = last_touch + timedelta(days=7)
+    day = last_touch + timedelta(days=FOLLOW_UP_DAYS)
     while day.weekday() >= 5 or day.isoformat() in holidays:
         day = day - timedelta(days=1)
     return day
@@ -78,7 +82,7 @@ with open(FILE, newline="") as f:
         last_date = date.fromisoformat(last_activity)
         days = (TODAY - last_date).days 
         if stage in ["Outreach", "Connected"]:
-            if days >= 7:
+            if days >= FOLLOW_UP_DAYS:
                 due.append((name, company, days))
             else:
                 not_due.append((last_date, name, company, stage))
