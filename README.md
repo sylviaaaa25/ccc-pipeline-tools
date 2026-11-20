@@ -21,6 +21,9 @@ An internet connection is needed to check holidays.
 It doesn't send messages, contact people, connect
 to LinkedIn, or modify CRM records.
 
+A CRM (Customer Relationship Management) system
+helps organize contacts, conversations, and follow-ups.
+
 
 ## Privacy
 The project uses fictional contact information for
