@@ -100,6 +100,7 @@ print("Stage counts:")
 for stage, count in stage_counts.items():
     print(stage, ":", count)
 
-print("Not due yet, with a suggested touch-by date:")
+print("\nNot due yet - suggested follow-up dates:")
 for last_touch, name, company, stage in sorted(not_due):
-    print(" ", name, "at", company, "|", stage, "| touch by", touch_by(last_touch, holidays).strftime("%a, %b %d"))
+    suggested_date = touch_by(last_touch, holidays).strftime("%a, %b %d")
+    print(f"{name} - {company} | {stage} | Touch by: {suggested_date}")
